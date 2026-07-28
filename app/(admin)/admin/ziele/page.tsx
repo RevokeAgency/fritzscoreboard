@@ -35,7 +35,7 @@ export default async function ZielePage({
   return (
     <div>
       <div className="mb-2 flex flex-wrap items-end justify-between gap-4">
-        <h1 className="font-display text-3xl">Jahresziele</h1>
+        <h1 className="font-brand text-3xl">Jahresziele</h1>
         <JahrAuswahl jahr={jahr} jahre={jahre} />
       </div>
       <p className="mb-6 text-sm text-grau-500">

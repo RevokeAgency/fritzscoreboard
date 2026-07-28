@@ -22,7 +22,7 @@ export default async function LandingPage() {
           <p className="text-xs font-semibold uppercase tracking-widest text-akzent">
             Außendienst Österreich
           </p>
-          <h1 className="font-display mt-4 text-5xl leading-[0.95] sm:text-7xl">
+          <h1 className="font-brand mt-4 text-5xl leading-[0.95] sm:text-7xl">
             Jede Listung
             <br />
             zählt.

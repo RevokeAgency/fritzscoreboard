@@ -75,7 +75,7 @@ export default async function AsmDetailPage({
 
       <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="font-display text-3xl">{asm.full_name}</h1>
+          <h1 className="font-brand text-3xl">{asm.full_name}</h1>
           <p className="text-sm text-grau-500">
             {asm.gebiet ? `Gebiet ${asm.gebiet}` : "Kein Gebiet"} · {asm.email}
           </p>

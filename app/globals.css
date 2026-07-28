@@ -42,6 +42,15 @@ body {
   text-transform: uppercase;
 }
 
+/* Offizielle Markenschrift – nur fuer Poster-Ueberschriften.
+   Faellt auf Archivo zurueck, falls die Schrift nicht laedt. */
+.font-brand {
+  font-family: var(--font-fritz), var(--font-archivo), system-ui, sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
 /* Sichtbarer Fokusring in Akzentfarbe, volle Tastaturbedienbarkeit */
 :focus-visible {
   outline: 2px solid var(--akzent);

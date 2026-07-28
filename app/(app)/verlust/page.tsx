@@ -19,7 +19,7 @@ export default async function VerlustPage() {
 
   return (
     <div>
-      <h1 className="font-display text-3xl">Kundenverlust erfassen</h1>
+      <h1 className="font-brand text-3xl">Kundenverlust erfassen</h1>
       <p className="mt-1 text-sm text-grau-500">
         Verlorenen Kunden dokumentieren. Betriebsschließung und Insolvenz werden
         neutral gestellt.

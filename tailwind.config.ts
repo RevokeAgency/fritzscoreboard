@@ -21,6 +21,12 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-archivo)", "system-ui", "sans-serif"],
         body: ["var(--font-inter)", "system-ui", "sans-serif"],
+        brand: [
+          "var(--font-fritz)",
+          "var(--font-archivo)",
+          "system-ui",
+          "sans-serif",
+        ],
       },
       borderRadius: {
         DEFAULT: "2px",

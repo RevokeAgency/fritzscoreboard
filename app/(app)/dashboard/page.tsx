@@ -62,7 +62,7 @@ export default async function DashboardPage({
   return (
     <div>
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="font-display text-3xl">Dashboard</h1>
+        <h1 className="font-brand text-3xl">Dashboard</h1>
         <JahrAuswahl jahr={jahr} jahre={jahre} />
       </div>
 

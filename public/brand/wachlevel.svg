@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="600" viewBox="0 0 480 600" role="img" aria-label="Platzhalter Markengrafik">
+  <rect width="480" height="600" fill="#0A0A0A"/>
+  <rect x="10" y="10" width="460" height="580" fill="none" stroke="#2A2A2A" stroke-width="2" stroke-dasharray="6 8"/>
+  <text x="40" y="120" font-family="Archivo, system-ui, sans-serif" font-weight="800" font-size="30" letter-spacing="-1" fill="#737373" text-decoration="underline">wachlevel:</text>
+  <text x="40" y="180" font-family="Archivo, system-ui, sans-serif" font-weight="800" font-size="64" letter-spacing="-2" fill="#FFFFFF">jenseits.</text>
+  <text x="40" y="540" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#737373">Markengrafik hier einsetzen</text>
+  <text x="40" y="564" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#525252">public/brand/wachlevel.(png|svg)</text>
+  <path d="M300 300 l60 -30 M300 300 l60 30 M360 270 l0 60" stroke="#FFD400" stroke-width="3" fill="none" opacity="0.5"/>
+</svg>

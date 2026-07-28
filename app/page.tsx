@@ -4,12 +4,21 @@ import { Logo } from "@/components/Logo";
 import { createClient } from "@/lib/supabase/server";
 
 export default async function LandingPage() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  // Die oeffentliche Startseite prueft nur optional, ob bereits eine Session
+  // besteht. Ein Konfigurations-/Netzwerkfehler darf sie nicht crashen lassen.
+  let angemeldet = false;
+  try {
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    angemeldet = Boolean(user);
+  } catch {
+    angemeldet = false;
+  }
 
-  if (user) redirect("/dashboard");
+  // redirect() ausserhalb des try/catch, da es intern eine Ausnahme wirft.
+  if (angemeldet) redirect("/dashboard");
 
   return (
     <main className="flex min-h-screen flex-col bg-schwarz text-weiss">

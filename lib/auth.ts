@@ -7,23 +7,30 @@ import type { Profile } from "@/lib/types";
 // - kein Profil        -> /login (Datenfehler)
 // - nicht freigeschaltet -> /warten
 export async function requireAktivesProfil(): Promise<Profile> {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  let user = null;
+  let profile: Profile | null = null;
 
-  if (!user) redirect("/login");
+  try {
+    const supabase = await createClient();
+    user = (await supabase.auth.getUser()).data.user;
+    if (user) {
+      const { data } = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("id", user.id)
+        .maybeSingle();
+      profile = (data as Profile) ?? null;
+    }
+  } catch {
+    // Konfigurations-/Netzwerkfehler: wie "nicht angemeldet" behandeln.
+    user = null;
+  }
 
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("*")
-    .eq("id", user.id)
-    .maybeSingle();
-
-  if (!profile) redirect("/login");
+  // redirect() ausserhalb des try/catch (wirft intern eine Ausnahme).
+  if (!user || !profile) redirect("/login");
   if (!profile.aktiv) redirect("/warten");
 
-  return profile as Profile;
+  return profile;
 }
 
 // Wie requireAktivesProfil, verlangt zusaetzlich die Admin-Rolle.

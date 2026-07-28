@@ -1,8 +1,8 @@
 # Markenassets
 
-Dieser Ordner enthält **Platzhalter**. Die offiziellen fritz-kola Dateien
-werden manuell ersetzt – Dateinamen bitte beibehalten:
+Offizielle fritz-kola Dateien (nicht selbst generieren, nur austauschen):
 
-- `logo.svg` – Wortmarke, wird im Kopfbereich und auf der Landing-Page verwendet.
-
-Assets nicht generieren, sondern durch die freigegebenen Originaldateien austauschen.
+- `fritz-kola_weiss_.png` – Wortmarke in Weiss (transparent), fuer dunklen Grund
+  (Landing, Auth, Navigation). Eingebunden ueber `components/Logo.tsx`.
+- `images.png` – Kampagnen-Grafik „wachlevel: jenseits." als Design-Element
+  auf der Landing-Page (schwarzer Hintergrund, fliesst in die Seite).

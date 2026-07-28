@@ -62,10 +62,11 @@ export default async function LandingPage() {
             </div>
           </div>
 
-          {/* Marken-Grafik als Design-Element. Datei: public/brand/wachlevel.svg */}
+          {/* Marken-Grafik als Design-Element (schwarzer Hintergrund fliesst in
+              die Seite; Datei: public/brand/images.png) */}
           <div className="flex justify-center lg:justify-end">
             <img
-              src="/brand/wachlevel.svg"
+              src="/brand/images.png"
               alt="wachlevel: jenseits."
               className="w-full max-w-sm select-none"
             />

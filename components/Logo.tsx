@@ -1,15 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 
-// Bindet den Marken-Platzhalter ein. Die offizielle Datei liegt unter
-// /public/brand/ und wird manuell ersetzt.
-export function Logo({ className = "" }: { className?: string }) {
+// Offizielles fritz-kola Logo (weiss, transparenter Hintergrund).
+// Wird auf dunklem Grund verwendet (Landing, Auth, Navigation).
+export function Logo({ className = "h-7 w-auto" }: { className?: string }) {
   return (
     <img
-      src="/brand/logo.svg"
+      src="/brand/fritz-kola_weiss_.png"
       alt="fritz-kola"
       className={className}
-      width={140}
-      height={28}
+      width={181}
+      height={51}
     />
   );
 }

@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --schwarz: #0a0a0a;
+  --weiss: #ffffff;
+  --grau-900: #1a1a1a;
+  --grau-500: #737373;
+  --grau-200: #e5e5e5;
+  --plus: #00a94f;
+  --minus: #e63329;
+  --akzent: #ffd400;
+}
+
+* {
+  border-color: var(--grau-200);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--weiss);
+  color: var(--schwarz);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Zahlen und Ueberschriften stehen tabellarisch */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.font-display {
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+/* Sichtbarer Fokusring in Akzentfarbe, volle Tastaturbedienbarkeit */
+:focus-visible {
+  outline: 2px solid var(--akzent);
+  outline-offset: 2px;
+}
+
+/* Nur Fortschrittsbalken und Punktevorschau animieren */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Recharts an das monochrome Theme anpassen */
+.recharts-cartesian-axis-tick text,
+.recharts-text {
+  fill: var(--grau-500);
+  font-size: 12px;
+}
+
+.recharts-cartesian-grid line {
+  stroke: var(--grau-200);
+}

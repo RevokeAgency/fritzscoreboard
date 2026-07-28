@@ -7,10 +7,25 @@ type CookieToSet = { name: string; value: string; options: CookieOptions };
 export async function updateSession(request: NextRequest) {
   let response = NextResponse.next({ request });
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  // Fehlende Konfiguration darf die gesamte Domain nicht mit einem 500
+  // (MIDDLEWARE_INVOCATION_FAILED) lahmlegen. Ohne Env-Variablen laesst die
+  // Middleware die Anfrage durch; die Seiten selbst melden dann den Zustand.
+  if (!url || !anonKey) {
+    return response;
+  }
+
+  const pfad = request.nextUrl.pathname;
+  const istOeffentlich =
+    pfad === "/" ||
+    pfad.startsWith("/login") ||
+    pfad.startsWith("/registrieren") ||
+    pfad.startsWith("/auth");
+
+  try {
+    const supabase = createServerClient(url, anonKey, {
       cookies: {
         getAll() {
           return request.cookies.getAll();
@@ -25,26 +40,23 @@ export async function updateSession(request: NextRequest) {
           );
         },
       },
-    },
-  );
+    });
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
-  const pfad = request.nextUrl.pathname;
-  const istOeffentlich =
-    pfad === "/" ||
-    pfad.startsWith("/login") ||
-    pfad.startsWith("/registrieren") ||
-    pfad.startsWith("/auth");
+    // Nicht angemeldet -> auf Login umleiten (ausser oeffentliche Seiten).
+    if (!user && !istOeffentlich) {
+      const redirectUrl = request.nextUrl.clone();
+      redirectUrl.pathname = "/login";
+      return NextResponse.redirect(redirectUrl);
+    }
 
-  // Nicht angemeldet -> auf Login umleiten (ausser oeffentliche Seiten).
-  if (!user && !istOeffentlich) {
-    const url = request.nextUrl.clone();
-    url.pathname = "/login";
-    return NextResponse.redirect(url);
+    return response;
+  } catch {
+    // Netzwerk- oder Konfigurationsfehler: Anfrage nicht global abbrechen.
+    // Geschuetzte Seiten erzwingen die Anmeldung weiterhin serverseitig.
+    return response;
   }
-
-  return response;
 }

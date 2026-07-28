@@ -12,7 +12,7 @@ export default function LoginPage() {
 
   return (
     <div>
-      <h1 className="font-brand text-4xl">Anmelden</h1>
+      <h1 className="font-brand text-[2.75rem] leading-[0.95]">Anmelden</h1>
       <p className="mt-2 text-sm text-grau-500">
         Zugang zum fritz-kola Scoreboard.
       </p>

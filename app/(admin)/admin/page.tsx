@@ -110,7 +110,7 @@ export default async function AdminUebersichtPage({
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
-        <h1 className="font-brand text-3xl">Gesamtübersicht</h1>
+        <h1 className="font-brand text-[2.5rem] leading-[0.95]">Gesamtübersicht</h1>
         <AdminUebersichtFilter
           jahr={jahr}
           jahre={jahre}
@@ -124,7 +124,7 @@ export default async function AdminUebersichtPage({
       <AsmUebersicht zeilen={zeilen} jahr={jahr} />
 
       <div>
-        <h2 className="mb-3 font-brand text-xl">Bewegungen aller ASM</h2>
+        <h2 className="mb-3 font-brand text-[1.75rem]">Bewegungen aller ASM</h2>
         <BewegungenTabelle zeilen={zeilenTabelle} zeigeAsm />
       </div>
     </div>

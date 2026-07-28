@@ -25,7 +25,7 @@ export function BewegungListe({
           {bewegungen.map((b) => (
             <li
               key={b.id}
-              className="flex items-center justify-between gap-3 border-b border-grau-200 px-4 py-3 last:border-b-0"
+              className="flex items-center justify-between gap-3 border-b border-grau-200 px-4 py-3 transition-colors last:border-b-0 hover:bg-grau-200/40"
             >
               <div className="min-w-0">
                 <div className="flex items-center gap-2">

@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
-import { Archivo, Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
-const archivo = Archivo({
-  subsets: ["latin"],
-  weight: ["800"],
+// Alle Schriften werden lokal eingebunden (self-hosted). Damit ist der Build
+// unabhaengig von externen Font-CDNs und laeuft deterministisch, u. a. auf Vercel.
+
+// Archivo 800 – ausschliesslich fuer Zahlen-/Datenwerte (tabellarische Ziffern).
+const archivo = localFont({
+  src: "./fonts/Archivo-800.woff2",
+  weight: "800",
   variable: "--font-archivo",
   display: "swap",
 });
 
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+// Inter – Fliesstext und Bedienoberflaeche.
+const inter = localFont({
+  src: "./fonts/Inter.woff2",
+  weight: "100 700",
   variable: "--font-inter",
   display: "swap",
 });
 
-// Offizielle Markenschrift von fritz-kola (lokal eingebunden).
-// Wird fuer die Poster-Ueberschriften verwendet; Zahlenwerte laufen weiter
-// ueber Archivo (tabellarische Ziffern).
+// Offizielle Markenschrift von fritz-kola – ausschliesslich fuer Ueberschriften.
 const fritz = localFont({
   src: "./fonts/FritzKolaInternational.ttf",
   variable: "--font-fritz",

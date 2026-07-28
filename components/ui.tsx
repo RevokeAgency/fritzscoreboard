@@ -132,14 +132,19 @@ export function Kennzahl({
         ? "text-minus"
         : "text-schwarz";
   return (
-    <Card className="p-4">
-      <div className="text-xs font-semibold uppercase tracking-wide text-grau-500">
+    <Card className="flex min-h-[7.25rem] flex-col p-4">
+      <div className="text-[11px] font-semibold uppercase tracking-wide text-grau-500">
         {label}
       </div>
-      <div className={clsx("font-display mt-2 text-3xl tabular", farbeClass)}>
+      <div
+        className={clsx(
+          "font-display mt-auto text-[2.125rem] leading-none tabular",
+          farbeClass,
+        )}
+      >
         {wert}
       </div>
-      {sub && <div className="mt-1 text-xs text-grau-500">{sub}</div>}
+      {sub && <div className="mt-1.5 text-[11px] text-grau-500">{sub}</div>}
     </Card>
   );
 }

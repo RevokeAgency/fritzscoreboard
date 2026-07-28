@@ -42,13 +42,15 @@ body {
   text-transform: uppercase;
 }
 
-/* Offizielle Markenschrift – nur fuer Poster-Ueberschriften.
+/* Offizielle fritz-kola Markenschrift – nur fuer Ueberschriften.
+   Kleingeschrieben als Markenstimme (fritz-kola tritt konsequent klein auf).
    Faellt auf Archivo zurueck, falls die Schrift nicht laedt. */
 .font-brand {
   font-family: var(--font-fritz), var(--font-archivo), system-ui, sans-serif;
   font-weight: 400;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  line-height: 0.98;
+  text-transform: lowercase;
 }
 
 /* Sichtbarer Fokusring in Akzentfarbe, volle Tastaturbedienbarkeit */

@@ -20,13 +20,21 @@ export function PunkteVorschau({
     : negativ
       ? "text-minus"
       : ergebnis.punkte === 0
-        ? "text-schwarz"
+        ? "text-weiss"
         : "text-plus";
 
+  const caption = ergebnis.ist_kam
+    ? "zählt nicht auf das Ziel"
+    : typ === "neulistung"
+      ? "von maximal 6 Punkten"
+      : typ === "verlust"
+        ? "Verlust: bis −3 Punkte"
+        : "von maximal 3 Punkten";
+
   return (
-    <div className="sticky bottom-0 border border-schwarz bg-schwarz p-4 text-weiss">
+    <div className="sticky bottom-0 border border-schwarz bg-schwarz p-5 text-weiss lg:bottom-auto">
       <div className="flex items-center justify-between">
-        <span className="text-xs font-semibold uppercase tracking-widest text-grau-500">
+        <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-grau-500">
           Punktevorschau
         </span>
         {ergebnis.ist_kam && (
@@ -38,15 +46,17 @@ export function PunkteVorschau({
 
       <div
         className={clsx(
-          "font-display mt-1 text-6xl tabular transition-all duration-200",
+          "font-display mt-1 text-[5.5rem] leading-none tabular transition-colors duration-200",
           farbe,
         )}
         aria-live="polite"
       >
         {formatPunkteVorzeichen(ergebnis.punkte)}
       </div>
+      <div className="mt-1.5 text-xs text-grau-500">{caption}</div>
 
-      <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-grau-200">
+      {/* Aufschluesselung als Ledger */}
+      <dl className="mt-4 border-t border-grau-900 text-sm">
         <Zeile
           label={`Absatz (${ABSATZSTUFE_LABEL[ergebnis.absatzstufe]})`}
           wert={ergebnis.punkte_absatz}
@@ -66,15 +76,16 @@ export function PunkteVorschau({
             />
           </>
         )}
-        {typ === "verlust" && ergebnis.neutral && (
-          <span className="text-akzent">
-            Grund neutral gestellt – keine Minuspunkte.
-          </span>
-        )}
-      </div>
+      </dl>
+
+      {typ === "verlust" && ergebnis.neutral && (
+        <p className="mt-3 text-sm text-akzent">
+          Grund neutral gestellt – keine Minuspunkte.
+        </p>
+      )}
 
       {ergebnis.ist_kam && (
-        <p className="mt-3 text-sm text-akzent">
+        <p className="mt-3 text-sm leading-relaxed text-akzent">
           Über 1.000 Kisten: Kunde fällt in die KAM-Betreuung und zählt nicht
           auf dein ASM-Ziel. Speichern ist möglich, die Bewegung wird als KAM
           markiert.
@@ -94,11 +105,16 @@ function Zeile({
   durchgestrichen?: boolean;
 }) {
   return (
-    <span className={clsx(durchgestrichen && "line-through opacity-50")}>
-      {label}:{" "}
-      <span className="font-semibold text-weiss tabular">
+    <div
+      className={clsx(
+        "flex items-center justify-between border-b border-grau-900 py-2.5",
+        durchgestrichen ? "text-grau-500 line-through" : "text-grau-200",
+      )}
+    >
+      <dt>{label}</dt>
+      <dd className="font-semibold text-weiss tabular">
         {wert > 0 ? `+${wert}` : wert}
-      </span>
-    </span>
+      </dd>
+    </div>
   );
 }

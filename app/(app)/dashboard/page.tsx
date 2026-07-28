@@ -62,7 +62,7 @@ export default async function DashboardPage({
   return (
     <div>
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="font-brand text-3xl">Dashboard</h1>
+        <h1 className="font-brand text-[2.5rem] leading-[0.95]">Dashboard</h1>
         <JahrAuswahl jahr={jahr} jahre={jahre} />
       </div>
 
@@ -77,6 +77,7 @@ export default async function DashboardPage({
         kennzahlen={kennzahlen}
         ziel={Number(ziel?.ziel_punkte ?? 0)}
         letzteBewegungen={(letzteRaw ?? []) as unknown as BewegungMitKunde[]}
+        jahr={jahr}
       />
     </div>
   );

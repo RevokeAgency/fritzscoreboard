@@ -11,10 +11,12 @@ export function DashboardAnsicht({
   kennzahlen,
   ziel,
   letzteBewegungen,
+  jahr,
 }: {
   kennzahlen: DashboardKennzahlen;
   ziel: number;
   letzteBewegungen: BewegungMitKunde[];
+  jahr?: number;
 }) {
   const brutto =
     kennzahlen.punkteNeulistung + kennzahlen.punkteExklusivdrehung;
@@ -26,6 +28,7 @@ export function DashboardAnsicht({
         ziel={ziel}
         brutto={brutto}
         verlust={kennzahlen.punkteVerlust}
+        jahr={jahr}
       />
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
@@ -33,21 +36,25 @@ export function DashboardAnsicht({
           label="Neulistungen (brutto)"
           wert={`+${formatZahl(kennzahlen.punkteNeulistung)}`}
           farbe="plus"
+          sub={`Punkte aus ${formatZahl(kennzahlen.anzahlNeulistung)} Listungen`}
         />
         <Kennzahl
           label="Exklusivdrehungen"
           wert={`+${formatZahl(kennzahlen.punkteExklusivdrehung)}`}
           farbe="schwarz"
+          sub={`Punkte aus ${formatZahl(kennzahlen.anzahlExklusivdrehung)} Drehungen`}
         />
         <Kennzahl
           label="Verluste"
           wert={formatZahl(kennzahlen.punkteVerlust)}
           farbe="minus"
+          sub={`Punkte aus ${formatZahl(kennzahlen.anzahlVerlust)} Verlusten`}
         />
         <Kennzahl
           label="Bewegungen gesamt"
           wert={formatZahl(kennzahlen.anzahlBewegungen)}
           farbe="schwarz"
+          sub={jahr ? `im Jahr ${jahr}` : undefined}
         />
       </div>
 

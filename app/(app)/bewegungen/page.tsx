@@ -42,7 +42,7 @@ export default async function BewegungenPage({
   return (
     <div>
       <div className="mb-4 flex items-center justify-between">
-        <h1 className="font-brand text-3xl">Meine Bewegungen</h1>
+        <h1 className="font-brand text-[2.5rem] leading-[0.95]">Meine Bewegungen</h1>
         <JahrAuswahl jahr={jahr} jahre={jahre} />
       </div>
       <p className="mb-4 text-sm text-grau-500">

@@ -6,6 +6,9 @@ export interface DashboardKennzahlen {
   punkteExklusivdrehung: number;
   punkteVerlust: number; // negativ
   anzahlBewegungen: number;
+  anzahlNeulistung: number;
+  anzahlExklusivdrehung: number;
+  anzahlVerlust: number;
   neulistungNachStufe: { stufe: string; anzahl: number }[];
   neulistungNachKundentyp: { kundentyp: string; anzahl: number }[];
 }
@@ -47,6 +50,10 @@ export function berechneKennzahlen(bewegungen: Bewegung[]): DashboardKennzahlen 
     punkteExklusivdrehung,
     punkteVerlust,
     anzahlBewegungen: bewegungen.length,
+    anzahlNeulistung: gewertet.filter((b) => b.typ === "neulistung").length,
+    anzahlExklusivdrehung: gewertet.filter((b) => b.typ === "exklusivdrehung")
+      .length,
+    anzahlVerlust: gewertet.filter((b) => b.typ === "verlust").length,
     neulistungNachStufe: [
       { stufe: "wenig", anzahl: stufen.wenig },
       { stufe: "mittel", anzahl: stufen.mittel },

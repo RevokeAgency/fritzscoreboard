@@ -9,7 +9,7 @@ export default async function NeukundePage() {
 
   return (
     <div>
-      <h1 className="font-brand text-3xl">Neulistung erfassen</h1>
+      <h1 className="font-brand text-[2.5rem] leading-[0.95]">Neulistung erfassen</h1>
       <p className="mt-1 text-sm text-grau-500">
         Neuer Gastro-Kunde oder Umstellung auf Exklusivbelieferung. Die
         Punktzahl siehst du live während der Eingabe.

@@ -27,7 +27,7 @@ export default async function WartenPage() {
           Freischaltung ausstehend
         </span>
       </div>
-      <h1 className="font-brand text-3xl">Fast geschafft</h1>
+      <h1 className="font-brand text-[2.5rem] leading-[0.95]">Fast geschafft</h1>
       <p className="mt-4 text-grau-500">
         {profile?.full_name ? `${profile.full_name}, dein` : "Dein"} Zugang ist
         registriert, aber noch nicht freigeschaltet. Die Administration prüft
